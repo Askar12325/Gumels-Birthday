@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Section } from "./Section";
 import { Reveal } from "./Reveal";
 import { MOVING_MOMENTS } from "../content";
@@ -34,14 +34,12 @@ function ArchVideo({
   isNext,
   isMuted,
   onToggleMute,
-  index,
 }: {
   src: string;
   isActive: boolean;
   isNext: boolean;
   isMuted: boolean;
   onToggleMute: () => void;
-  index: number;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [ready, setReady] = useState(false);
@@ -293,7 +291,6 @@ export function MovingMomentsSection() {
               <div key={v} style={{ scrollSnapAlign: "center", flexShrink: 0 }} onClick={() => goTo(i)}>
                 <ArchVideo
                   src={v}
-                  index={i}
                   isActive={i === activeIdx}
                   isNext={i === activeIdx + 1}
                   isMuted={mutedVideos.has(i)}
